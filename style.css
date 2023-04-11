@@ -1,0 +1,246 @@
+body{
+    margin:0;
+    padding: 0;
+    
+}
+
+a{
+    text-decoration: none;  
+    font-family: "Roboto";
+    
+}
+li{
+    list-style: none;
+   
+}
+
+
+hr{
+    width: 100%;
+    height: 1px;
+   background-color: #ccc;
+  border: none;
+}
+
+nav{
+    background-color:#3F72E9; 
+    width: 100%;
+    height:3.7rem ;
+    color:#FFFFFF;
+    position: sticky;
+    top: 0;
+    left: 0;
+   
+     
+ }
+
+
+nav a{
+    text-decoration: none;
+    color:#FFFFFF
+}
+
+hr{
+    width: 100%;
+    height: 1px;
+   background-color: #ccc;
+  border: none;
+  margin: 1rem 0;
+}
+
+
+#header{
+        margin: 0;
+        display: flex;
+        justify-content: center;       
+    }
+
+    /* .navbar-list {
+        list-style: none;
+        margin:10px 10px;
+        color: white;
+      
+        
+    } */
+    
+    
+  
+    
+    li.searchbar-list{
+    margin:5px 0;
+    }
+    
+
+.searchbar{
+margin:0.4rem 0.1rem 1rem;
+width:40vw;
+height: 6.4vh;
+}
+.logo{
+    width: 6rem;
+    height: 1.9rem;
+    margin:1rem 0.1rem;
+    
+}
+.become-seller{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin:1rem 1rem;
+    padding-left: 1rem;
+}
+
+.cart{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin:1rem 0;
+    padding-left: 1rem;
+}
+
+.display_none{
+    display: none;
+}
+
+
+.product{
+    display: flex;
+    justify-content: space-around;
+}
+
+.product_details{
+    display: flex;
+}
+.specifications{
+   padding: 0;
+}
+.ratings{
+    display: flex;
+}
+
+.rating-pill{
+    width: 1.9rem;
+    height: 1rem;
+    margin-top: 1.2rem;
+    margin-right: 0.5rem;
+    background-color: #508C47;
+    border-radius: 3px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.product_pricing{
+    margin-top: 1.2rem;
+}
+
+.price_list{
+    padding-left:0 ;
+}
+.product-name{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 0;
+    }
+    .phone-image{
+        margin-top:2.5rem;
+        width: 10rem;
+        height: 12rem;
+    }
+
+
+    .specifications{
+        margin: 0;
+        padding: 0;
+        margin-left: 15px;
+      
+    }
+    
+  .specifications li{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    }
+    .span_list{
+        text-decoration: line-through;
+    }
+
+    .price_list_ul{
+        padding-left: 14%;
+        line-height: 1.3rem;
+    }
+    
+    .price{
+    font-family: 'Roboto';
+    margin-left: 30px;
+    margin-bottom: 0;
+    margin-top: 25px;  
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    }
+    
+.bold{
+    font-style: bold;
+}
+
+.bank_offers_button{
+    border: none;
+    background-color: #ffffff;
+   color:#508C47;
+   font-size: 0.90rem;
+   font-weight: bold;
+   padding-left: 0;
+   
+}
+
+.checklist_compare_div{
+    background-color: rgb(142, 127, 127);
+}
+
+
+
+.popup_div{
+    color: #3F72E9;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    margin:10rem 4rem;
+    background-color:white;
+    font-size: larger;
+    padding:2%;
+    border: solid rgb(101, 100, 100);
+    border-width: 1px;
+    font-weight: bold;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .product{
+        flex-direction: column;
+    
+    }
+    .product_pricing{
+        margin-left: 11.5rem;
+    }
+
+    .phone-image{
+        margin-left:1rem ;
+    }
+    .logo{
+        margin-left: 1.5rem;
+    }
+    .searchbar{
+        width: 40rem;
+        margin-left: 1rem;
+    }
+}
