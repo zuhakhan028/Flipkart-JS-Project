@@ -1,234 +1,3 @@
-
-//navbar.
-let navbar = document.createElement("nav");
-navbar.id = "header"
-
-//logo
-let logo = document.createElement("img");
-logo.src = "images/Vector (1).png"
-logo.alt = "logo"
-logo.classList.add("logo");
-navbar.appendChild(logo);
-
-//searchbar.
-let searchbar = document.createElement("input");
-searchbar.type = "search"
-searchbar.classList.add("searchbar");
-searchbar.placeholder = "Search"
-navbar.appendChild(searchbar)
-
-//Cart list.
-let cart = document.createElement("a");
-cart.innerHTML = "Cart";
-cart.href = "./cart.html";
-cart.classList.add("cart")
-navbar.appendChild(cart);
-
-//Become a Seller.
-let seller = document.createElement("a");
-seller.href = "./seller.html"
-seller.classList.add("become-seller")
-seller.innerHTML = "Become a seller"
-navbar.appendChild(seller)
-document.body.appendChild(navbar)
-
-for (let idx = 0; idx < productJSON.length; idx++) {
-
-
-  let product_JSON_1_ele = productJSON[idx];
-  let product_string = JSON.stringify(product_JSON_1_ele);
-  let product_parse = JSON.parse(product_string);
-
-
-  //----------------product div--------------------
-  let product_div = document.createElement("div");
-  product_div.id = `product_div_${idx + 1}`
-  let product = document.createElement("div");
-  product.classList.add("product");
-
-  //Add to cart Functionality.
-  let add_to_cart_div = document.createElement("div");
-  add_to_cart_div.classList.add("add_to_cart_div")
-
-  //add to compare checkbox.
-  let add_to_cart_checkbox = document.createElement("input");
-  add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
-  add_to_cart_checkbox.type = "checkbox";
-  add_to_cart_checkbox.id = `add_to_cart_product${idx + 1}`
-  add_to_cart_checkbox.name = "add_to_cart"
-  add_to_cart_checkbox.value = "add_to_cart"
-  add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
-  add_to_cart_div.appendChild(add_to_cart_checkbox)
-
-  let checkbox_label_cart = document.createElement("label")
-  checkbox_label_cart.htmlFor = "add_to_cart";
-  checkbox_label_cart.innerHTML = "Add to Cart";
-  add_to_cart_div.appendChild(checkbox_label_cart);
-
-  //Add to compare Functionality.
-  let add_to_compare_div = document.createElement("div");
-  add_to_compare_div.id = `add_to_compare_div_${idx + 1}`
-  add_to_compare_div.classList.add("add_to_compare_div")
-
-
-  //add to compare checkbox.
-  let add_to_compare_checkbox = document.createElement("input");
-  add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
-  add_to_compare_checkbox.type = "checkbox";
-  add_to_compare_checkbox.id = `add_to_compare_product${idx + 1}`
-  add_to_compare_checkbox.name = "add_to_compare"
-  add_to_compare_checkbox.value = "add_to_compare"
-  add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
-  add_to_compare_div.appendChild(add_to_compare_checkbox)
-
-  let checkbox_label = document.createElement("label")
-  checkbox_label.htmlFor = "add_to_compare";
-  checkbox_label.innerHTML = "Add to Compare";
-  add_to_compare_div.appendChild(checkbox_label);
-
-  //Add to compare functionality.
-
-
-  //Appending all the elements of productdiv to productdiv.
-  product_div.appendChild(product);
-  product_div.appendChild(add_to_cart_div);
-  product_div.appendChild(add_to_compare_div);
-
-  //product details div.
-  let product_details = document.createElement("div");
-  product_details.classList.add("product_details");
-  const product_img = document.createElement("img");
-  product_img.src = `${product_parse.image.url}`
-
-  //appending phone image to product details.
-  let raw_image = product_details.appendChild(product_img)
-  raw_image.classList.add("phone-image");
-
-  //appending product_description ul to product details.
-  let product_description = document.createElement("ul");
-  product_description.classList.add("product_description");
-  product_details.appendChild(product_description);
-
-  //appending product_name to product description.
-  let product_name = document.createElement("h4");
-  product_name.classList.add("product-name")
-  product_name.innerHTML = `${product_parse.title}`;
-  product_description.appendChild(product_name);
-
-  //appending ratings and reviews div.
-  //ratings div.
-
-  let ratings = document.createElement("div");
-  ratings.classList.add("ratings");
-  product_description.appendChild(ratings);
-
-  //rating pill.
-  let rating_pill = document.createElement("div");
-  rating_pill.classList.add("rating-pill");
-  rating_pill.innerHTML = `${product_parse.ratings.overallRating}`
-  ratings.appendChild(rating_pill);
-
-  //ratings and reviews count.
-
-  let ratings_and_reviews = document.createElement("p");
-  ratings_and_reviews.classList.add("ratings_and_reviews");
-  ratings_and_reviews.innerHTML = `${product_parse.ratings.totalRatingsNum} Ratings & ${product_parse.ratings.totalReviewsNum} Reviews`
-  ratings.appendChild(ratings_and_reviews)
-
-
-  // ul for specifications.
-  let specifications = document.createElement("ul");
-  specifications.classList.add("specifications");
-  product_description.appendChild(specifications);
-
-  //features list li.
-  for (i = 0; i < product_parse.featuresList.length; i++) {
-    let featuresList = document.createElement("li");
-    featuresList.innerHTML = `${product_parse.featuresList[i]}`
-    specifications.appendChild(featuresList)
-  }
-
-  //-----------------------product_pricing-----------
-  //product pricing div
-  let product_pricing = document.createElement("div");
-  product_pricing.classList.add("product_pricing");
-
-  //h3 price.
-  let price = document.createElement("h3");
-  product_pricing.appendChild(price);
-  price.innerHTML = `Rs.${product_parse.price.mrp}`
-  price.classList.add("price");
-
-  //price_list ul
-  let price_list = document.createElement("ul");
-  price_list.classList.add("price_list_ul")
-  product_pricing.appendChild(price_list);
-
-  // li - child of price_list.
-  let finalprice = document.createElement("li");
-  let finalprice_div = document.createElement("div");
-  finalprice.appendChild(finalprice_div)
-  finalprice.innerHTML = `Rs.${product_parse.price.finalPrice}`
-  price_list.appendChild(finalprice);
-
-  //1. span element.
-  let span = document.createElement("span")
-  if (product_parse.price.discount.type === "PERCENT") {
-    span.innerHTML = `&nbsp;  ${product_parse.price.discount.data} % off`
-  }
-  else {
-    span.innerHTML = `  ${product_parse.price.discount.data} ${toLowerCase(product_parse.price.discount.type)}`
-  }
-  finalprice.appendChild(span)
-
-  let freeDelivery = document.createElement("li");
-  if (product_parse.freeDelivery) {
-    freeDelivery.innerHTML = `Free Delivery`
-    price_list.appendChild(freeDelivery)
-  }
-  else {
-    delivery = "not eligible"
-  }
-
-  let ExchangeOffer = document.createElement("li");
-  ExchangeOffer.innerHTML = `Upto Rs.${product_parse.exchangeOfferDiscount.data} off on Exchange`
-  price_list.appendChild(ExchangeOffer)
-
-  //BankOffers.
-  let bank_offers = document.createElement("li");
-  let bank_offers_button = document.createElement("button")
-  bank_offers_button.classList.add("bank_offers_button")
-  price_list.appendChild(bank_offers);
-  bank_offers.appendChild(bank_offers_button)
-  bank_offers_button.innerHTML = `${product_parse.bankOffersLink.buttonText}`
-  bank_offers_button.addEventListener("click", linkBankOffer)
-
-  function linkBankOffer() {
-    window.location = "https://nextleap.app/"
-  }
-
-  let hr = document.createElement("hr");
-  hr.classList.add("hr")
-
-  product.appendChild(product_details);
-  product.appendChild(product_pricing);
-  document.body.appendChild(product_div);
-  document.body.appendChild(hr);
-}
-
-let compare_all_checkboxes = document.getElementsByName("add_to_compare");
-compare_all_checkboxes.forEach(occurence => {
-  occurence.addEventListener("click", function () {
-    let compare_dialog_box = document.createElement("div");
-    compare_dialog_box.innerHTML = "this is compare div."
-    compare_dialog_box.id = "compare_dialog_box"
-    compare_dialog_box.classList.add("add_to_compare_dialog_box");
-    document.body.appendChild(compare_dialog_box);
-  })
-})
-
-
-
 //JSON data.
 const productJSON = [
   {
@@ -417,12 +186,7 @@ const productJSON = [
   },
 ];
 
-
-
-
-
 //JSON for footer
-
 const footerJson = {
   colunms: [
     {
@@ -502,3 +266,232 @@ const footerJson = {
     },
   ],
 }
+
+
+
+
+//navbar.
+let navbar = document.createElement("nav");
+navbar.id = "header"
+
+//logo
+let logo = document.createElement("img");
+logo.src = "images/Vector (1).png"
+logo.alt = "logo"
+logo.classList.add("logo");
+navbar.appendChild(logo);
+
+//searchbar.
+let searchbar = document.createElement("input");
+searchbar.type = "search"
+searchbar.classList.add("searchbar");
+searchbar.placeholder = "Search"
+navbar.appendChild(searchbar)
+
+//Cart list.
+let cart = document.createElement("a");
+cart.innerHTML = "Cart";
+cart.href = "./cart.html";
+cart.classList.add("cart")
+navbar.appendChild(cart);
+
+//Become a Seller.
+let seller = document.createElement("a");
+seller.href = "./seller.html"
+seller.classList.add("become-seller")
+seller.innerHTML = "Become a seller"
+navbar.appendChild(seller)
+document.body.appendChild(navbar)
+
+for (let idx = 0; idx < productJSON.length; idx++) {
+  let product_JSON_1_ele = productJSON[idx];
+  let product_string = JSON.stringify(product_JSON_1_ele);
+  let product_parse = JSON.parse(product_string);
+
+  //----------------product div--------------------
+  let product_div = document.createElement("div");
+  product_div.id = `product_div_${idx + 1}`
+  let product = document.createElement("div");
+  product.classList.add("product");
+
+  //Add to cart Functionality.
+  let add_to_cart_div = document.createElement("div");
+  add_to_cart_div.classList.add("add_to_cart_div")
+
+  //add to compare checkbox.
+  let add_to_cart_checkbox = document.createElement("input");
+  add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
+  add_to_cart_checkbox.type = "checkbox";
+  add_to_cart_checkbox.id = `add_to_cart_product${idx + 1}`
+  add_to_cart_checkbox.name = "add_to_cart"
+  add_to_cart_checkbox.value = "add_to_cart"
+  add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
+  add_to_cart_div.appendChild(add_to_cart_checkbox)
+
+  let checkbox_label_cart = document.createElement("label")
+  checkbox_label_cart.htmlFor = "add_to_cart";
+  checkbox_label_cart.innerHTML = "Add to Cart";
+  add_to_cart_div.appendChild(checkbox_label_cart);
+
+  //Add to compare Functionality.
+  let add_to_compare_div = document.createElement("div");
+  add_to_compare_div.id = `add_to_compare_div_${idx + 1}`
+  add_to_compare_div.classList.add("add_to_compare_div")
+
+  //add to compare checkbox.
+  let add_to_compare_checkbox = document.createElement("input");
+  add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
+  add_to_compare_checkbox.type = "checkbox";
+  add_to_compare_checkbox.id = `add_to_compare_product${idx + 1}`
+  add_to_compare_checkbox.name = "add_to_compare"
+  add_to_compare_checkbox.value = "add_to_compare"
+  add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
+  add_to_compare_div.appendChild(add_to_compare_checkbox)
+
+  let checkbox_label = document.createElement("label")
+  checkbox_label.htmlFor = "add_to_compare";
+  checkbox_label.innerHTML = "Add to Compare";
+  add_to_compare_div.appendChild(checkbox_label);
+
+  //Appending all the elements of productdiv to productdiv.
+  product_div.appendChild(product);
+  product_div.appendChild(add_to_cart_div);
+  product_div.appendChild(add_to_compare_div);
+
+  //product details div.
+  let product_details = document.createElement("div");
+  product_details.classList.add("product_details");
+  const product_img = document.createElement("img");
+  product_img.src = `${product_parse.image.url}`
+
+  //appending phone image to product details.
+  let raw_image = product_details.appendChild(product_img)
+  raw_image.classList.add("phone-image");
+
+  //appending product_description ul to product details.
+  let product_description = document.createElement("ul");
+  product_description.classList.add("product_description");
+  product_details.appendChild(product_description);
+
+  //appending product_name to product description.
+  let product_name = document.createElement("h4");
+  product_name.classList.add("product-name")
+  product_name.innerHTML = `${product_parse.title}`;
+  product_description.appendChild(product_name);
+
+  //appending ratings and reviews div.
+  //ratings div.
+
+  let ratings = document.createElement("div");
+  ratings.classList.add("ratings");
+  product_description.appendChild(ratings);
+
+  //rating pill.
+  let rating_pill = document.createElement("div");
+  rating_pill.classList.add("rating-pill");
+  rating_pill.innerHTML = `${product_parse.ratings.overallRating}`
+  ratings.appendChild(rating_pill);
+
+  //ratings and reviews count.
+
+  let ratings_and_reviews = document.createElement("p");
+  ratings_and_reviews.classList.add("ratings_and_reviews");
+  ratings_and_reviews.innerHTML = `${product_parse.ratings.totalRatingsNum} Ratings & ${product_parse.ratings.totalReviewsNum} Reviews`
+  ratings.appendChild(ratings_and_reviews)
+
+
+  // ul for specifications.
+  let specifications = document.createElement("ul");
+  specifications.classList.add("specifications");
+  product_description.appendChild(specifications);
+
+  //features list li.
+  for (i = 0; i < product_parse.featuresList.length; i++) {
+    let featuresList = document.createElement("li");
+    featuresList.innerHTML = `${product_parse.featuresList[i]}`
+    specifications.appendChild(featuresList)
+  }
+
+  //-----------------------product_pricing-----------
+  //product pricing div
+  let product_pricing = document.createElement("div");
+  product_pricing.classList.add("product_pricing");
+
+  //h3 price.
+  let price = document.createElement("h3");
+  product_pricing.appendChild(price);
+  price.innerHTML = `Rs.${product_parse.price.mrp}`
+  price.classList.add("price");
+
+  //price_list ul
+  let price_list = document.createElement("ul");
+  price_list.classList.add("price_list_ul")
+  product_pricing.appendChild(price_list);
+
+  // li - child of price_list.
+  let finalprice = document.createElement("li");
+  let finalprice_div = document.createElement("div");
+  finalprice.appendChild(finalprice_div)
+  finalprice.innerHTML = `Rs.${product_parse.price.finalPrice}`
+  price_list.appendChild(finalprice);
+
+  //1. span element.
+  let span = document.createElement("span")
+  if (product_parse.price.discount.type === "PERCENT") {
+    span.innerHTML = `&nbsp;  ${product_parse.price.discount.data} % off`
+  }
+  else {
+    span.innerHTML = `  ${product_parse.price.discount.data} ${toLowerCase(product_parse.price.discount.type)}`
+  }
+  finalprice.appendChild(span)
+
+  let freeDelivery = document.createElement("li");
+  if (product_parse.freeDelivery) {
+    freeDelivery.innerHTML = `Free Delivery`
+    price_list.appendChild(freeDelivery)
+  }
+  else {
+    delivery = "not eligible"
+  }
+
+  let ExchangeOffer = document.createElement("li");
+  ExchangeOffer.innerHTML = `Upto Rs.${product_parse.exchangeOfferDiscount.data} off on Exchange`
+  price_list.appendChild(ExchangeOffer)
+
+  //BankOffers.
+  let bank_offers = document.createElement("li");
+  let bank_offers_button = document.createElement("button")
+  bank_offers_button.classList.add("bank_offers_button")
+  price_list.appendChild(bank_offers);
+  bank_offers.appendChild(bank_offers_button)
+  bank_offers_button.innerHTML = `${product_parse.bankOffersLink.buttonText}`
+  bank_offers_button.addEventListener("click", linkBankOffer)
+
+  function linkBankOffer() {
+    window.location = "https://nextleap.app/"
+  }
+
+
+
+  let hr = document.createElement("hr");
+  hr.classList.add("hr")
+  
+  product.appendChild(product_details);
+  product.appendChild(product_pricing);
+  document.body.appendChild(product_div);
+  document.body.appendChild(hr);
+}
+
+let compare_all_checkboxes = document.getElementsByName("add_to_compare");
+compare_all_checkboxes.forEach(occurence => {
+  occurence.addEventListener("click", function () {
+    let compare_dialog_box = document.createElement("div");
+    compare_dialog_box.innerHTML = "hello"
+    compare_dialog_box.id = "compare_dialog_box"
+    compare_dialog_box.classList.add("add_to_compare_dialog_box");
+    document.body.appendChild(compare_dialog_box);
+  })
+})
+
+
+
