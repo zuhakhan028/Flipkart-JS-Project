@@ -202,11 +202,27 @@ height: 6.4vh;
    
 }
 
-.checklist_compare_div{
-    background-color: rgb(142, 127, 127);
+.add_to_compare_div{
+    margin: 0rem 12.8rem;
 }
 
+.add_to_cart_div{
+    margin: 2rem  12.8rem 1rem;
+}
 
+.add_to_compare_dialog_box{
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height:12rem;
+    width: 25rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    font-size: larger;
+
+}
 
 .popup_div{
     color: #3F72E9;

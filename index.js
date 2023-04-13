@@ -21,8 +21,6 @@
 
 
 
-
-
 //navbar.
 let navbar=document.createElement("nav");
 navbar.id="header"
@@ -260,7 +258,7 @@ const productJSON = [
       },
     },
   ];
-console.log(productJSON.length)
+
   for(let idx=0;idx<productJSON.length;idx++){
 
   
@@ -270,11 +268,61 @@ console.log(productJSON.length)
 
 
 //----------------product div--------------------
-
-
+let product_div=document.createElement("div");
+product_div.id=`product_div_${idx+1}`
 let product=document.createElement("div");
 product.classList.add("product");
 
+//Add to cart Functionality.
+let add_to_cart_div=document.createElement("div");
+add_to_cart_div.classList.add("add_to_cart_div")
+
+//add to compare checkbox.
+let add_to_cart_checkbox=document.createElement("input");
+add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
+add_to_cart_checkbox.type="checkbox";
+add_to_cart_checkbox.id=`add_to_cart_product${idx+1}`
+add_to_cart_checkbox.name="add_to_cart"
+add_to_cart_checkbox.value="add_to_cart"
+add_to_cart_checkbox.classList.add("add_to_cart_checkbox")
+add_to_cart_div.appendChild(add_to_cart_checkbox)
+
+let checkbox_label_cart=document.createElement("label")
+checkbox_label_cart.htmlFor="add_to_cart";
+checkbox_label_cart.innerHTML="Add to Cart";
+add_to_cart_div.appendChild(checkbox_label_cart);
+
+
+
+//Add to compare Functionality.
+let add_to_compare_div=document.createElement("div");
+add_to_compare_div.id=`add_to_compare_div_${idx+1}`
+add_to_compare_div.classList.add("add_to_compare_div")
+
+
+//add to compare checkbox.
+let add_to_compare_checkbox=document.createElement("input");
+add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
+add_to_compare_checkbox.type="checkbox";
+add_to_compare_checkbox.id=`add_to_comapre_product${idx+1}`
+add_to_compare_checkbox.name="add_to_compare"
+add_to_compare_checkbox.value="add_to_compare"
+add_to_compare_checkbox.classList.add("add_to_compare_checkbox")
+add_to_compare_div.appendChild(add_to_compare_checkbox)
+
+let checkbox_label=document.createElement("label")
+checkbox_label.htmlFor="add_to_compare";
+checkbox_label.innerHTML="Add to Compare";
+add_to_compare_div.appendChild(checkbox_label);
+
+//Add to compare functionality.
+
+
+
+//Appending all the elements of productdiv to productdiv.
+product_div.appendChild(product);
+product_div.appendChild(add_to_cart_div);
+product_div.appendChild(add_to_compare_div);
 
 //product details div.
 let product_details=document.createElement("div");
@@ -369,7 +417,7 @@ if(product_parse.freeDelivery){
     price_list.appendChild(freeDelivery)
 }
 else{
-    console.log("not eligible for free delivery")
+  delivery="not eligible"
 }
 
 let ExchangeOffer=document.createElement("li");
@@ -379,21 +427,17 @@ price_list.appendChild(ExchangeOffer)
 //BankOffers.
 let bank_offers=document.createElement("li");
 let bank_offers_button=document.createElement("button")
-// bank_offers_button.href=`${}`
 bank_offers_button.classList.add("bank_offers_button")
 price_list.appendChild(bank_offers);
 bank_offers.appendChild(bank_offers_button)
 bank_offers_button.innerHTML=`${product_parse.bankOffersLink.buttonText}`
+bank_offers_button.addEventListener("click",linkBankOffer)
 
-bank_offers_button.addEventListener("click",bankurl)
-
-function bankurl(){
-  // window.location=`${}`
+function linkBankOffer(){
+  window.location="https://nextleap.app/"
 }
 
-//checklist for compare.
-// let checklist_compare_div=document.createElement("div");
-// checklist_compare_div.innerHTML="Checklist Div"
+
 
 let hr=document.createElement("hr");
 hr.classList.add("hr")
@@ -402,66 +446,10 @@ hr.classList.add("hr")
 
 product.appendChild(product_details);
 product.appendChild(product_pricing);
-// product.appendChild(checklist_compare_div).classList.add("checklist_compare_div");
-document.body.appendChild(product);
+document.body.appendChild(product_div);
 document.body.appendChild(hr);
-console.log(product)
-}
 
-// how to append a url for a button?
-//other product skeleton using js.
-//popup div cross functionality.
-//toggle button for shutter-down.
-//strik before percentage.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
 
 
   const footerJson = {
