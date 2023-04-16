@@ -211,35 +211,91 @@ height: 6.4vh;
 }
 
 .add_to_compare_dialog_box{
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    color: black;
     position: fixed;
     bottom: 0;
     right: 0;
-    height:12rem;
-    width: 25rem;
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: rgb(224, 217, 217);
     font-size: larger;
 
 }
-
-.popup_div{
-    color: #3F72E9;
+.all_products_div{
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 50vw;
-    height: 50vh;
-    margin:10rem 4rem;
-    background-color:white;
-    font-size: larger;
-    padding:2%;
-    border: solid rgb(101, 100, 100);
-    border-width: 1px;
-    font-weight: bold;
+    flex-direction: row;
+}
+.id_of_all_products_div{
+    display: flex;
+    flex-direction: row;
 }
 
+.cross_img{
+    width: 0.5rem;
+    height: 0.5rem;
+    padding-left: 5rem;
+}
+.compare_product_img{
+    width: 5rem;
+    height:7rem
+}
+
+.each_product_div{
+    margin: 1rem 0.3rem;
+    font-size: 0.7rem;
+    font-family: "Roboto";
+    display: flex;
+    flex-direction: column;
+  
+
+}
+
+.product_name_for_each_product{
+    width: 4rem;
+    text-align: center;
+
+}
+
+.display_none{
+    display: none;
+}
+
+.remove_all_button{
+    font-family: "Roboto";
+   background-color: rgb(241, 235, 235);
+    font-size: 0.9rem;
+    border-width: 1px;
+    border-color: rgb(224, 217, 217);
+    margin-right: 0.5rem;
+    width: 40%;
+    
+}
+
+.compare_all_button{
+    font-family: "Roboto";
+    background-color:#3F72E9; 
+    font-size: 0.9rem;
+    border-width: 1px;
+    border-color: rgb(224, 217, 217);
+    margin-right: 0.5rem;
+    color: white;
+    width: 48%;
+
+    
+   
+}
+
+.compare_dialog_box_buttons_div{
+   padding: 1rem;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-items: flex-end;
+   
+}
 @media (min-width: 320px) and (max-width: 768px) {
     .product{
         flex-direction: column;

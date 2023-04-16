@@ -270,6 +270,22 @@ const footerJson = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //navbar.
 let navbar = document.createElement("nav");
 navbar.id = "header"
@@ -316,6 +332,7 @@ for (let idx = 0; idx < productJSON.length; idx++) {
 
   //Add to cart Functionality.
   let add_to_cart_div = document.createElement("div");
+  add_to_cart_div.id= `add_to_cart_div${idx+1}`
   add_to_cart_div.classList.add("add_to_cart_div")
 
   //add to compare checkbox.
@@ -482,16 +499,129 @@ for (let idx = 0; idx < productJSON.length; idx++) {
   document.body.appendChild(hr);
 }
 
+
+
+
+
+
 let compare_all_checkboxes = document.getElementsByName("add_to_compare");
 compare_all_checkboxes.forEach(occurence => {
-  occurence.addEventListener("click", function () {
-    let compare_dialog_box = document.createElement("div");
-    compare_dialog_box.innerHTML = "hello"
-    compare_dialog_box.id = "compare_dialog_box"
-    compare_dialog_box.classList.add("add_to_compare_dialog_box");
-    document.body.appendChild(compare_dialog_box);
+ 
+  occurence.addEventListener("change", function () {
+    if(document.getElementById("compare_dialog_box")){
+      //nothing.
+    
+    }
+    else{
+      let compare_dialog_box = document.createElement("div");
+      compare_dialog_box.id = "compare_dialog_box"
+      compare_dialog_box.classList.add("add_to_compare_dialog_box");
+      navbar.appendChild(compare_dialog_box); //appending the dialogbox to navbar. 
+    }
+
+    // let comparing_product=document.createElement("div");
+    let product_compared_id_string=occurence.id
+    let compare_product_id=document.getElementById(product_compared_id_string);//gives id of the compare checkbox.
+    let parent_of_the_compare_checkbox=compare_product_id.parentNode; //gives parent node of the compare checkbox.
+    let parent_of_the_compare_checkbox_id=parent_of_the_compare_checkbox.id; //id of parent node of check box
+    let compare_productparent_id=document.getElementById(parent_of_the_compare_checkbox_id);//add to compare checkbox id
+    let sibling_of_compare_productparent=compare_productparent_id.previousElementSibling; //gives sibling of add to compare that is add to cart
+    let accessing_sibling_of_compare_productparent=sibling_of_compare_productparent.id;
+    let sibling_of_compare_productparent_id=document.getElementById(accessing_sibling_of_compare_productparent).previousElementSibling;
+    let children_of_compare_productparent_id=sibling_of_compare_productparent_id.childNodes[0];
+    let the_img_of_compared_product=children_of_compare_productparent_id.childNodes[0].src;
+    let accessing_ul_of_product=children_of_compare_productparent_id.childNodes[1]
+    let accesing_children_of_product_ul=accessing_ul_of_product.childNodes[0].innerHTML
+   
+
+  
+   
+
+    let each_product_div=document.createElement("div");
+    each_product_div.id="each_product_div";
+    each_product_div.classList.add("each_product_div")
+
+    let cross_img=document.createElement("img");
+    cross_img.src="images/close.png"
+    cross_img.classList.add("cross_img")
+    each_product_div.appendChild(cross_img)
+    
+
+  
+
+
+    let inner_div_of_comparing_product=document.createElement("img");
+    inner_div_of_comparing_product.id="inner_div_of_comparing_product"
+    inner_div_of_comparing_product.src=the_img_of_compared_product;
+    inner_div_of_comparing_product.classList.add("compare_product_img");
+    each_product_div.appendChild(inner_div_of_comparing_product)
+
+    let product_name_for_each_product=document.createElement("div");
+    product_name_for_each_product.innerHTML=accesing_children_of_product_ul;
+    product_name_for_each_product.classList.add("product_name_for_each_product")
+    each_product_div.appendChild(product_name_for_each_product)
+   
+   
+
+if(document.getElementById("all_products_div")){
+  let id_of_all_products_div=document.getElementById("all_products_div");
+  id_of_all_products_div.classList.add("id_of_all_products_div")
+  id_of_all_products_div.appendChild(each_product_div)
+  
+  
+}
+else{
+  let all_products_div=document.createElement("div");
+  all_products_div.id="all_products_div"
+  all_products_div.appendChild(each_product_div);
+
+
+
+  let remove_all_button=document.createElement("button");
+  remove_all_button.innerHTML="Remove All";
+  remove_all_button.classList.add("remove_all_button")
+
+
+  let compare_all_button= document.createElement("button");
+  compare_all_button.id="compare_all_button"
+  compare_all_button.innerHTML="Compare All"
+  compare_all_button.classList.add("compare_all_button");
+ 
+
+  
+  let compare_dialog_box_buttons_div=document.createElement("div");
+  compare_dialog_box_buttons_div.classList.add("compare_dialog_box_buttons_div")
+  compare_dialog_box_buttons_div.appendChild(remove_all_button);
+  compare_dialog_box_buttons_div.appendChild(compare_all_button);
+
+
+
+
+  remove_all_button.addEventListener("click",function(){
+    let id_of_compare_div=document.getElementById("compare_dialog_box")
+    id_of_compare_div.classList.add("display_none");
+
   })
-})
+
+ 
+  compare_dialog_box.appendChild(all_products_div);
+  compare_dialog_box.appendChild(compare_dialog_box_buttons_div)
+
+}
+
+let id_of_all_products_div=document.getElementById("all_products_div")
+let id_of_compare_all_button=document.getElementById("compare_all_button")
+id_of_compare_all_button.innerHTML=`Compare All (${id_of_all_products_div.children.length})`
+
+
+
+      });
+
+
+});
+
+
+
 
 
 
