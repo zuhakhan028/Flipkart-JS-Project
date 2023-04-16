@@ -299,6 +299,11 @@ height: 6.4vh;
 .footer{
     background-color: #1A2335;
 }
+.coloums_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .coloums_div_1{
     display: flex;
@@ -313,6 +318,69 @@ height: 6.4vh;
     font-size: 0.8rem;
     line-height: 1.6rem;
 }
+.coloums_div_2{
+    display: flex;
+    flex-direction: row;
+    font-family: "Roboto";
+    line-height: 1.6rem;
+    justify-content: space-between;
+    font-size: 1rem;
+    padding: 1rem
+}
+.list_div_2{
+    width: 20rem;
+    color: white;
+    font-family: "Roboto";
+    line-height: 1.6rem;
+}
+
+.col_div_2_innerElement{
+    color: white;
+    font-family: "Roboto";
+    line-height: 1.6rem;
+    font-size: 0.8rem;
+
+}
+
+#col_div_2_innerElement1{
+    padding-right: 1rem;
+}
+
+.footer_hr{
+    border: 1px;
+    color: white;
+}
+#bottomColunms{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1.5rem;
+}
+.bottom_coloums_div_1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 2rem;
+}
+
+.icon_text{
+    color: white;
+    font-family:"Roboto";
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    margin-left: 0.5rem;
+    padding-top: 0.3rem;
+    width: 8rem;
+}
+.copyright{
+    color: white;
+    font-family: "Roboto";
+}
+
+
+.bottom_coloums_div_2{
+    margin-left: 8rem;
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
     .product{
         flex-direction: column;

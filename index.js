@@ -186,10 +186,6 @@ const productJSON = [
   },
 ];
 
-
-
-
-
 //navbar.
 let navbar = document.createElement("nav");
 navbar.id = "header"
@@ -236,7 +232,7 @@ for (let idx = 0; idx < productJSON.length; idx++) {
 
   //Add to cart Functionality.
   let add_to_cart_div = document.createElement("div");
-  add_to_cart_div.id= `add_to_cart_div${idx+1}`
+  add_to_cart_div.id = `add_to_cart_div${idx + 1}`
   add_to_cart_div.classList.add("add_to_cart_div")
 
   //add to compare checkbox.
@@ -392,31 +388,24 @@ for (let idx = 0; idx < productJSON.length; idx++) {
     window.location = "https://nextleap.app/"
   }
 
-
-
   let hr = document.createElement("hr");
   hr.classList.add("hr")
-  
+
   product.appendChild(product_details);
   product.appendChild(product_pricing);
   document.body.appendChild(product_div);
   document.body.appendChild(hr);
 }
 
-
-
-
-
-
 let compare_all_checkboxes = document.getElementsByName("add_to_compare");
 compare_all_checkboxes.forEach(occurence => {
- 
+
   occurence.addEventListener("change", function () {
-    if(document.getElementById("compare_dialog_box")){
+    if (document.getElementById("compare_dialog_box")) {
       //nothing.
-    
+
     }
-    else{
+    else {
       let compare_dialog_box = document.createElement("div");
       compare_dialog_box.id = "compare_dialog_box"
       compare_dialog_box.classList.add("add_to_compare_dialog_box");
@@ -424,111 +413,83 @@ compare_all_checkboxes.forEach(occurence => {
     }
 
     // let comparing_product=document.createElement("div");
-    let product_compared_id_string=occurence.id
-    let compare_product_id=document.getElementById(product_compared_id_string);//gives id of the compare checkbox.
-    let parent_of_the_compare_checkbox=compare_product_id.parentNode; //gives parent node of the compare checkbox.
-    let parent_of_the_compare_checkbox_id=parent_of_the_compare_checkbox.id; //id of parent node of check box
-    let compare_productparent_id=document.getElementById(parent_of_the_compare_checkbox_id);//add to compare checkbox id
-    let sibling_of_compare_productparent=compare_productparent_id.previousElementSibling; //gives sibling of add to compare that is add to cart
-    let accessing_sibling_of_compare_productparent=sibling_of_compare_productparent.id;
-    let sibling_of_compare_productparent_id=document.getElementById(accessing_sibling_of_compare_productparent).previousElementSibling;
-    let children_of_compare_productparent_id=sibling_of_compare_productparent_id.childNodes[0];
-    let the_img_of_compared_product=children_of_compare_productparent_id.childNodes[0].src;
-    let accessing_ul_of_product=children_of_compare_productparent_id.childNodes[1]
-    let accesing_children_of_product_ul=accessing_ul_of_product.childNodes[0].innerHTML
-   
+    let product_compared_id_string = occurence.id
+    let compare_product_id = document.getElementById(product_compared_id_string);//gives id of the compare checkbox.
+    let parent_of_the_compare_checkbox = compare_product_id.parentNode; //gives parent node of the compare checkbox.
+    let parent_of_the_compare_checkbox_id = parent_of_the_compare_checkbox.id; //id of parent node of check box
+    let compare_productparent_id = document.getElementById(parent_of_the_compare_checkbox_id);//add to compare checkbox id
+    let sibling_of_compare_productparent = compare_productparent_id.previousElementSibling; //gives sibling of add to compare that is add to cart
+    let accessing_sibling_of_compare_productparent = sibling_of_compare_productparent.id;
+    let sibling_of_compare_productparent_id = document.getElementById(accessing_sibling_of_compare_productparent).previousElementSibling;
+    let children_of_compare_productparent_id = sibling_of_compare_productparent_id.childNodes[0];
+    let the_img_of_compared_product = children_of_compare_productparent_id.childNodes[0].src;
+    let accessing_ul_of_product = children_of_compare_productparent_id.childNodes[1]
+    let accesing_children_of_product_ul = accessing_ul_of_product.childNodes[0].innerHTML
 
-  
-   
-
-    let each_product_div=document.createElement("div");
-    each_product_div.id="each_product_div";
+    let each_product_div = document.createElement("div");
+    each_product_div.id = "each_product_div";
     each_product_div.classList.add("each_product_div")
 
-    let cross_img=document.createElement("img");
-    cross_img.src="images/close.png"
+    let cross_img = document.createElement("img");
+    cross_img.src = "images/close.png"
     cross_img.classList.add("cross_img")
     each_product_div.appendChild(cross_img)
-    
 
-  
+    cross_img.addEventListener("click",function(){
+      each_product_div.classList.add("display_none");
+    })
 
-
-    let inner_div_of_comparing_product=document.createElement("img");
-    inner_div_of_comparing_product.id="inner_div_of_comparing_product"
-    inner_div_of_comparing_product.src=the_img_of_compared_product;
+    let inner_div_of_comparing_product = document.createElement("img");
+    inner_div_of_comparing_product.id = "inner_div_of_comparing_product"
+    inner_div_of_comparing_product.src = the_img_of_compared_product;
     inner_div_of_comparing_product.classList.add("compare_product_img");
     each_product_div.appendChild(inner_div_of_comparing_product)
 
-    let product_name_for_each_product=document.createElement("div");
-    product_name_for_each_product.innerHTML=accesing_children_of_product_ul;
+    let product_name_for_each_product = document.createElement("div");
+    product_name_for_each_product.innerHTML = accesing_children_of_product_ul;
     product_name_for_each_product.classList.add("product_name_for_each_product")
     each_product_div.appendChild(product_name_for_each_product)
-   
-   
 
-if(document.getElementById("all_products_div")){
-  let id_of_all_products_div=document.getElementById("all_products_div");
-  id_of_all_products_div.classList.add("id_of_all_products_div")
-  id_of_all_products_div.appendChild(each_product_div)
-  
-  
-}
-else{
-  let all_products_div=document.createElement("div");
-  all_products_div.id="all_products_div"
-  all_products_div.appendChild(each_product_div);
+    if (document.getElementById("all_products_div")) {
+      let id_of_all_products_div = document.getElementById("all_products_div");
+      id_of_all_products_div.classList.add("id_of_all_products_div")
+      id_of_all_products_div.appendChild(each_product_div)
+    }
+    else {
+      let all_products_div = document.createElement("div");
+      all_products_div.id = "all_products_div"
+      all_products_div.appendChild(each_product_div);
 
+      let remove_all_button = document.createElement("button");
+      remove_all_button.innerHTML = "Remove All";
+      remove_all_button.classList.add("remove_all_button")
 
+      let compare_all_button = document.createElement("button");
+      compare_all_button.id = "compare_all_button"
+      compare_all_button.innerHTML = "Compare All"
+      compare_all_button.classList.add("compare_all_button");
 
-  let remove_all_button=document.createElement("button");
-  remove_all_button.innerHTML="Remove All";
-  remove_all_button.classList.add("remove_all_button")
+      let compare_dialog_box_buttons_div = document.createElement("div");
+      compare_dialog_box_buttons_div.classList.add("compare_dialog_box_buttons_div")
+      compare_dialog_box_buttons_div.appendChild(remove_all_button);
+      compare_dialog_box_buttons_div.appendChild(compare_all_button);
 
+      remove_all_button.addEventListener("click", function () {
+        let id_of_compare_div = document.getElementById("compare_dialog_box")
+        id_of_compare_div.classList.add("display_none");
 
-  let compare_all_button= document.createElement("button");
-  compare_all_button.id="compare_all_button"
-  compare_all_button.innerHTML="Compare All"
-  compare_all_button.classList.add("compare_all_button");
- 
+      })
+      compare_dialog_box.appendChild(all_products_div);
+      compare_dialog_box.appendChild(compare_dialog_box_buttons_div)
+    }
 
-  
-  let compare_dialog_box_buttons_div=document.createElement("div");
-  compare_dialog_box_buttons_div.classList.add("compare_dialog_box_buttons_div")
-  compare_dialog_box_buttons_div.appendChild(remove_all_button);
-  compare_dialog_box_buttons_div.appendChild(compare_all_button);
-
-
-
-
-  remove_all_button.addEventListener("click",function(){
-    let id_of_compare_div=document.getElementById("compare_dialog_box")
-    id_of_compare_div.classList.add("display_none");
-
-  })
-
- 
-  compare_dialog_box.appendChild(all_products_div);
-  compare_dialog_box.appendChild(compare_dialog_box_buttons_div)
-
-}
-
-let id_of_all_products_div=document.getElementById("all_products_div")
-let id_of_compare_all_button=document.getElementById("compare_all_button")
-id_of_compare_all_button.innerHTML=`Compare All (${id_of_all_products_div.children.length})`
-
-
-
-      });
-
-
+    let id_of_all_products_div = document.getElementById("all_products_div")
+    let id_of_compare_all_button = document.getElementById("compare_all_button")
+    id_of_compare_all_button.innerHTML = `Compare All (${id_of_all_products_div.children.length})`
+  });
 });
 
-// for(let footeridx=0;footeridx<footerJson.length;footerJson++){
-//   console.log("hello")
-// }
-
-
+//footer JSON.
 const footerJson = {
   colunms: [
     {
@@ -610,55 +571,95 @@ const footerJson = {
 }
 
 
-let stringify_footer_json=JSON.stringify(footerJson);
-let parse_footer_json=JSON.parse(stringify_footer_json);
+let stringify_footer_json = JSON.stringify(footerJson);
+let parse_footer_json = JSON.parse(stringify_footer_json);
 
 //footer.
-let footer=document.createElement("footer");
+let footer = document.createElement("footer");
 footer.classList.add("footer")
-let coloums_div=document.createElement("div");
-let bottomColunms=document.createElement("div");
+let coloums_div = document.createElement("div");
+coloums_div.id = "coloums_div"
+coloums_div.classList.add("coloums_div")
+let bottomColunms = document.createElement("div");
+bottomColunms.id = "bottomColunms"
 
-let coloums_div_1=document.createElement("div");
+let coloums_div_1 = document.createElement("div");
 coloums_div_1.classList.add("coloums_div_1");
-coloums_div_1.id="coloums_div_1"
-let coloums_div_2=document.createElement("div");
+coloums_div_1.id = "coloums_div_1"
+let coloums_div_2 = document.createElement("div");
+coloums_div_2.classList.add("coloums_div_2");
+coloums_div_2.id = "coloums_div_2"
 
-console.log(parse_footer_json.colunms)
-for(let j=0;j<1;j++){
-  
-  for(let k=0;k<parse_footer_json.colunms.length-2;k++){
-    let each_list_div=document.createElement("div");
-  each_list_div.id=`ul_title${k}`
-    let ul_title=document.createElement("ul");
-    ul_title.innerHTML=parse_footer_json.colunms[k].title
+
+for (let j = 0; j < 1; j++) {
+  for (let k = 0; k < parse_footer_json.colunms.length - 2; k++) {
+    let each_list_div = document.createElement("div");
+    each_list_div.id = `ul_title${k}`
+    let ul_title = document.createElement("ul");
+    ul_title.innerHTML = parse_footer_json.colunms[k].title
     each_list_div.appendChild(ul_title)
-    for(let l=0;l<parse_footer_json.colunms[k].data.length;l++){
-      let li_footer=document.createElement("li");
-      li_footer.innerHTML=parse_footer_json.colunms[k].data[l]
+    for (let l = 0; l < parse_footer_json.colunms[k].data.length; l++) {
+      let li_footer = document.createElement("li");
+      li_footer.innerHTML = parse_footer_json.colunms[k].data[l]
       ul_title.appendChild(li_footer);
     }
     coloums_div_1.appendChild(each_list_div);
   }
- 
-}
 
+  for (let m = 4; m < parse_footer_json.colunms.length; m++) {
+    let col_div_2_innerElement = document.createElement("div");
+    col_div_2_innerElement.innerHTML = parse_footer_json.colunms[m].title;
+    col_div_2_innerElement.id = `col_div_2_innerElement${m - 3}`
+    col_div_2_innerElement.classList.add("col_div_2_innerElement")
+    let list_div_2 = document.createElement("li");
+    list_div_2.classList.add("list_div_2")
+    list_div_2.innerHTML = parse_footer_json.colunms[m].data;
+    col_div_2_innerElement.appendChild(list_div_2)
+    coloums_div_2.appendChild(col_div_2_innerElement)
+  }
+}
 
 coloums_div.appendChild(coloums_div_1);
 coloums_div.appendChild(coloums_div_2);
-// for(let j=0;j<parse_footer_json.bottomColunms.length;j++){
-//   let img=document.createElement("img")
-  
-//   img.src=parse_footer_json.bottomColunms[j].img
-//    console.log(parse_footer_json.bottomColunms[j].text)
-//   let icon_text=document.createElement("div");
-//   icon_text.innerHTML=parse_footer_json.bottomColunms[j].text
-//   img.appendChild(icon_text)
 
-//   footer.appendChild(img)
-// }
+let footer_hr = document.createElement("hr");
+footer_hr.classList.add("footer_hr")
+
+for (let y = 0; y < parse_footer_json.bottomColunms.length - 2; y++) {
+  let bottom_coloums_div_1 = document.createElement("div");
+  bottom_coloums_div_1.id = "bottom_coloums_div_1"
+  bottom_coloums_div_1.classList.add("bottom_coloums_div_1")
+  let the_cta_footer_icons = document.createElement("div");
+  the_cta_footer_icons.classList.add("the_cta_footer_icons")
+  let img = document.createElement("img")
+  img.src = parse_footer_json.bottomColunms[y].img
+  let icon_text = document.createElement("div");
+  icon_text.innerHTML = parse_footer_json.bottomColunms[y].text
+  icon_text.classList.add("icon_text")
+
+  bottom_coloums_div_1.appendChild(img)
+  bottom_coloums_div_1.appendChild(icon_text)
+  bottomColunms.appendChild(bottom_coloums_div_1);
+}
+
+let copyright=document.createElement("div");
+copyright.innerHTML=parse_footer_json.bottomColunms[4].text;
+copyright.classList.add("copyright");
+bottomColunms.appendChild(copyright);
+
+for (let z = 5; z < parse_footer_json.bottomColunms.length; z++) {
+  let bottom_coloums_div_2 = document.createElement("div");
+  bottom_coloums_div_2.id = "bottom_coloums_div_2";
+  bottom_coloums_div_2.classList.add("bottom_coloums_div_2");
+  let img = document.createElement("img")
+  img.src = parse_footer_json.bottomColunms[z].img;
+  bottom_coloums_div_2.appendChild(img)
+  bottomColunms.appendChild(bottom_coloums_div_2)
+
+}
 
 footer.appendChild(coloums_div);
+footer.appendChild(footer_hr)
 footer.appendChild(bottomColunms);
 document.body.appendChild(footer)
 
