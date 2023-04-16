@@ -296,6 +296,23 @@ height: 6.4vh;
    justify-items: flex-end;
    
 }
+.footer{
+    background-color: #1A2335;
+}
+
+.coloums_div_1{
+    display: flex;
+    color: white;
+    font-family: "Roboto";
+}
+
+.coloums_div_1 li{
+    display: flex;
+    color: white;
+    font-family: "Roboto";
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+}
 @media (min-width: 320px) and (max-width: 768px) {
     .product{
         flex-direction: column;
