@@ -1,1 +1,0 @@
-var n:number=100;
